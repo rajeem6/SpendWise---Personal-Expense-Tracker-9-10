@@ -6,9 +6,9 @@ import Features from "../components/Features";
 import LandingFooter from "../components/landingFooter";
 
 const Landing = () => {
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Nav />
