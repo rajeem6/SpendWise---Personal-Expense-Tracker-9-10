@@ -1202,6 +1202,12 @@ h6 {
   }
 }
 
+@media (max-width: 500px){
+  .feature{
+    width: 60%;
+  }
+}
+
 /* Mobile L */
 
 @media (max-width: 425px){
