@@ -12,7 +12,7 @@ import {
 import Register2 from "./ui/register2";
 import Dashboard from "./Pages/Dashboard";
 import { onAuthStateChanged } from "firebase/auth";
-import { Auth } from "./firebase/firebase";
+import { Auth, db } from "./firebase/firebase";
 
 function App() {
   const [addClass2, setAddClass2] = useState(false);

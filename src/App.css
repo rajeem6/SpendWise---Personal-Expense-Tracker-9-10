@@ -146,9 +146,6 @@ nav {
 
 /* about */
 
-#about {
-}
-
 .about__row {
   display: flex;
   transition: 600ms ease;
@@ -1029,6 +1026,22 @@ h6 {
   border-radius: 12px;
 }
 
+.expense-close {
+  margin-top: 20px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  width: fit-content;
+  align-self: center;
+  transition: 400ms ease;
+}
+
+.expense-close:hover {
+  color: rgb(248, 121, 121);
+}
+
 .expense:hover {
   scale: 1.1;
   border-radius: 0;
@@ -1059,17 +1072,17 @@ h6 {
 
 /* dashboard footer */
 
-.dashboard__footer{
+.dashboard__footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.dashboard__footer-span{
+.dashboard__footer-span {
   margin-bottom: 16px;
 }
 
-.dashboard__footer__title{
+.dashboard__footer__title {
   color: white;
 }

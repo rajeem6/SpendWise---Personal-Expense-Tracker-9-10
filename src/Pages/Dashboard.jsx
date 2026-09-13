@@ -15,7 +15,7 @@ const Dashboard = () => {
     <>
       <DashboardNav user={user} />
       <DashboardHeader />
-      <TheeDashboard />
+      <TheeDashboard user ={user} />
       <DashboardFooter />
     </>
   );

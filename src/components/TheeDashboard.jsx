@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardChart from "./dashboardChart";
 import Expense from "../ui/Expense";
+import { Auth, db } from "../firebase/firebase.js";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 
-const TheeDashboard = () => {
+const TheeDashboard = ({ user }) => {
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -30,7 +32,35 @@ const TheeDashboard = () => {
     setDesc("");
     setAmount("");
     setCategory("");
+
+    addExpense(newExpense);
   }
+
+  // firestore
+
+  async function addExpense(newExpense) {
+    const data = await addDoc(
+      collection(db, "users", user.uid, "expenses"),
+      newExpense,
+    );
+    getExpense();
+  }
+
+  async function getExpense() {
+    const dataRef = await getDocs(
+      collection(db, "users", user.uid, "expenses"),
+    );
+    const ExpensesData = dataRef.docs.map((doc) => {
+      return { ...doc.data(), id: doc.id };
+    });
+    setExpenses(ExpensesData);
+  }
+
+  useEffect(() => {
+    if (user) {
+      getExpense();
+    }
+  }, [user]);
 
   return (
     <section id="dashboard">
@@ -120,7 +150,12 @@ const TheeDashboard = () => {
         <div className={`dashboard__expenses ${animate && "animateNow"}`}>
           <div className="dashboard__expenses-header">
             <h3 className="dashboard__expenses-title">Your List</h3>
-            <button onClick={() => setExpenses([])} className="dashboard__expenses-btn">CLEAR LIST</button>
+            <button
+              onClick={() => setExpenses([])}
+              className="dashboard__expenses-btn"
+            >
+              CLEAR LIST
+            </button>
           </div>
           <h6>
             Total Expenses: ${" "}
@@ -130,10 +165,14 @@ const TheeDashboard = () => {
             {expenses.length > 0
               ? expenses.map((expense, index) => (
                   <Expense
-                    id={index}
+                    key={index}
                     description={expense.description}
                     cost={expense.amount}
                     category={expense.category}
+                    id={expense.id}
+                    user={user}
+                    setExpenses={setExpenses}
+                    expenses={expenses}
                   />
                 ))
               : "{ - EXPENSES WILL SHOW UP HERE - }"}
