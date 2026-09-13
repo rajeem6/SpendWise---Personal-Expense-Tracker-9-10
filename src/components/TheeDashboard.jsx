@@ -147,15 +147,9 @@ const TheeDashboard = ({ user }) => {
             </form>
           </div>
         </div>
-        <div className={`dashboard__expenses ${animate && "animateNow"}`}>
+        <div className={`dashboard__expenses row ${animate && "animateNow"}`}>
           <div className="dashboard__expenses-header">
             <h3 className="dashboard__expenses-title">Your List</h3>
-            <button
-              onClick={() => setExpenses([])}
-              className="dashboard__expenses-btn"
-            >
-              CLEAR LIST
-            </button>
           </div>
           <h6>
             Total Expenses: ${" "}

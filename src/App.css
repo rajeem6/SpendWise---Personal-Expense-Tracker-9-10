@@ -54,7 +54,7 @@ span {
   padding: 80px 0;
 }
 
-/* nav */
+/* Landing nav */
 
 nav {
   height: 100px;
@@ -678,6 +678,7 @@ nav {
   flex-direction: column;
   gap: 6px;
   transition: 300ms ease;
+  padding-right: 20px;
 }
 .dashboard__nav__link-configure.popOut {
   visibility: visible;
@@ -876,6 +877,7 @@ nav {
   width: 50%;
   border: 1px dashed white;
   padding: 30px;
+  overflow: hidden;
 }
 
 .dashboard__right {
@@ -1014,6 +1016,13 @@ h6 {
   border-color: var(--primal);
 }
 
+.dashboard__expenses {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px dashed white;
+}
+
 .expense {
   color: white;
   display: flex;
@@ -1085,4 +1094,84 @@ h6 {
 
 .dashboard__footer__title {
   color: white;
+}
+
+/* MEDIA QUERIEZ */
+
+
+/* Laptops */
+
+@media (max-width: 1024px) {
+  /* dashboard nav */
+
+  .dashboard__nav {
+    padding: 0 20px;
+  }
+
+  /* dashboard header */
+
+  .dashboard__header__row {
+    align-items: center;
+    text-align: center;
+    border-left: none;
+  }
+
+  /* dashboard Footer */
+  
+  .dashboard__footer__xtra{
+    max-width: 100%;
+  }
+
+  .dashboard__row__footer__row{
+    padding: 0 80px;
+  }
+
+  /* dashboard nav profile configuration */
+
+  .dashboard__nav__profile__close{
+    margin-left: 50px;
+  }
+}
+
+/* tablets */
+
+@media (max-width: 768px){
+
+  /* dashboard main */
+
+  .dashboard__row{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dashboard__left,
+  .dashboard__right{
+    width: 100%;
+  }
+}
+
+/* Mobile L */
+
+@media (max-width: 425px){
+  /* dashboard nav */
+
+  .dashboard__nav__link{
+    display: none;
+  }
+
+  /* dashboard header */
+
+  .dashboard__header__title{
+    font-size: 60px;
+  }
+
+  /* dashboard__nav__link__configurations */
+
+  .dashboard__nav__profile__close{
+    margin-left: -60px;
+  }
+
+  .dashboard__nav__link-configure{
+    margin-left: -10px;
+  }
 }
